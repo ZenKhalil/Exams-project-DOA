@@ -1,0 +1,361 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+#game-container {
+    flex: 4;  /* Takes up more space compared to visualization */
+    position: relative;
+    height: 100vh;
+}
+
+#visualization-panel {
+    flex: 1;  /* Takes up less space */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-width: 250px;  /* Limit maximum width */
+    font-size: 12px;  /* Smaller font size */
+}
+
+#visualization-panel h3 {
+    text-align: center;
+    color: #333;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.step {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.step h4 {
+    margin: 0 0 5px 0;
+    color: #666;
+    font-size: 12px;
+}
+
+.array-visual {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    padding: 5px;
+}
+
+.platform-element {
+    background: #333;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 2px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.count-element {
+    background: #4CAF50;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 2px;
+    font-size: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-width: 15px;
+}
+
+.highlight {
+    background: #f1c40f;
+    transform: scale(1.1);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#ui {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#introduction {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#perfect {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#restart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 24px;
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    pointer-events: auto;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+}body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+#game-container {
+    flex: 2;
+    position: relative;
+    height: 100vh;
+}
+
+#visualization-panel {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#visualization-panel h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.step {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.step h4 {
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+.array-visual {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+}
+
+.platform-element {
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.count-element {
+    background: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.highlight {
+    background: #f1c40f;
+    transform: scale(1.1);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#ui {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#introduction {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#perfect {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#restart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 24px;
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    pointer-events: auto;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+}body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#ui {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#introduction {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#perfect {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#restart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 24px;
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    pointer-events: auto;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+}
