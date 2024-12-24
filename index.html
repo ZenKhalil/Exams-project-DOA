@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Hero - Algorithm Visualization</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div id="game-container">
+            <canvas id="game"></canvas>
+            <div id="ui">
+                <div id="introduction">Click and hold to stretch out the stick</div>
+                <div id="perfect">PERFECT!</div>
+                <button id="restart">↺</button>
+                <div id="score">0</div>
+            </div>
+        </div>
+        <div id="visualization-panel">
+            <h3>Counting Sort Visualization</h3>
+            <div id="sort-steps">
+                <div id="original-array" class="step">
+                    <h4>Original Platforms</h4>
+                    <div class="array-visual"></div>
+                </div>
+                <div id="counting-array" class="step">
+                    <h4>Counting Array</h4>
+                    <div class="array-visual"></div>
+                </div>
+                <div id="sorted-array" class="step">
+                    <h4>Sorted Platforms</h4>
+                    <div class="array-visual"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Structures -->
+    <script src="datastructures/CircularBuffer.js"></script>
+    
+    <!-- Algorithms -->
+    <script src="algorithms/CountingSort.js"></script>
+    
+    <!-- Game Logic -->
+    <script src="./game/Renderer.js"></script>
+    <script src="game/StickHero.js"></script>
+    <script src="game/visualization.js"></script>
+</body>
+</html>
