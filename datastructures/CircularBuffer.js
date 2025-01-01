@@ -1,10 +1,33 @@
 class CircularBuffer {
   constructor(maxSize) {
     this.buffer = new Array(maxSize);
-    this.head = 0; // Read position
-    this.tail = 0; // Write position
+    this.head = 0;
+    this.tail = 0;
     this.length = 0;
     this.maxSize = maxSize;
+  }
+
+  // Clear the buffer
+  clear() {
+    this.head = 0;
+    this.tail = 0;
+    this.length = 0;
+    this.buffer = new Array(this.maxSize);
+  }
+
+  // Check if buffer is full
+  isFull() {
+    return this.length === this.maxSize;
+  }
+
+  // Check if buffer is empty
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  // Get current size
+  size() {
+    return this.length;
   }
 
   // Add a new platform
@@ -56,28 +79,5 @@ class CircularBuffer {
     this.length--;
 
     return platform;
-  }
-
-  // Clear the buffer
-  clear() {
-    this.head = 0;
-    this.tail = 0;
-    this.length = 0;
-    this.buffer = new Array(this.maxSize);
-  }
-
-  // Check if buffer is full
-  isFull() {
-    return this.length === this.maxSize;
-  }
-
-  // Check if buffer is empty
-  isEmpty() {
-    return this.length === 0;
-  }
-
-  // Get current size
-  size() {
-    return this.length;
   }
 }
