@@ -1,0 +1,199 @@
+/* Variables  */
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --highlight-color: #f1c40f;
+  --gray-light: #f8f9fa;
+  --gray-border: #e0e0e0;
+  --text-dark: #2c3e50;
+  --text-muted: #666;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-glow: 0 0 20px rgba(243, 156, 18, 0.8);
+  --anim-duration: 0.3s;
+  --spacing-sm: 5px;
+  --spacing-md: 10px;
+  --spacing-lg: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* Control Section */
+.controls {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--anim-duration) ease;
+}
+
+.button-group button:hover {
+  background-color: var(--primary-dark);
+}
+
+.button-group button:disabled {
+  background-color: var(--gray-border);
+  cursor: not-allowed;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* Visualization Container */
+.visualization {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Array Containers & elements */
+.array-container {
+  border: 1px solid var(--gray-border);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  background-color: var(--gray-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.array-container h3 {
+  margin: 0 0 15px;
+  color: var(--text-dark);
+  font-size: 1.2em;
+}
+
+#original-array, 
+#count-array, 
+#sorted-array {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+  padding: var(--spacing-md);
+  min-height: 100px;
+}
+
+.count-element-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: var(--spacing-sm);
+  min-width: 60px;
+  position: relative;
+}
+
+.number-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  min-width: 30px;
+  min-height: 30px;
+  text-align: center;
+  transition: all var(--anim-duration) ease;
+  font-weight: bold;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Labels */
+.position-indicator, 
+.count-label {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  margin-top: var(--spacing-sm);
+  text-align: center;
+  transition: all var(--anim-duration) ease;
+}
+
+/* History Section */
+.step-history {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--gray-light);
+  border-radius: 8px;
+  border: 1px solid var(--gray-border);
+}
+
+.history-step {
+  padding: 8px;
+  margin: var(--spacing-sm) 0;
+  background-color: white;
+  border-radius: 4px;
+  border-left: 3px solid var(--primary-color);
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all var(--anim-duration) ease;
+}
+
+.history-step:hover {
+  background-color: #f0f7ff;
+  transform: translateX(5px);
+}
+
+.history-step.active {
+  background-color: #e8f4ff;
+  border-left-color: var(--success-color);
+  font-weight: bold;
+}
+
+/* Element states & animations */
+.number-element.changing {
+  animation: pulse 0.5s ease; 
+  background-color: var(--highlight-color);
+}
+
+.number-element.highlighted {
+  background-color: var(--danger-color);
+  animation: pulse 0.5s ease infinite;
+}
+
+.number-element.processing {
+  background-color: var(--warning-color) !important;
+  animation: glow 1s ease infinite;
+}
+
+.number-element.placeholder {
+  background-color: var(--gray-light);
+  border: 2px dashed var(--gray-border);
+  color: var(--text-muted);
+}
+
+/* Animation keyframes */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(243, 156, 18, 0.5); }
+  50% { box-shadow: var(--shadow-glow); }
+  100% { box-shadow: 0 0 5px rgba(243, 156, 18, 0.5); }
+}
