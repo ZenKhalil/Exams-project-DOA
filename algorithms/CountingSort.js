@@ -56,7 +56,6 @@ class CountingSort {
     }
 
     // Create array to track which indices we've processed for each number
-    const processedCounts = new Array(range).fill(0);
     const output = new Array(numbers.length);
 
     // Place numbers in the output array using cumulative counts
@@ -125,3 +124,4 @@ class CountingSort {
     this.sortingSteps = [];
   }
 }
+ 

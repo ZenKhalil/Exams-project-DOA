@@ -47,7 +47,7 @@
   border-radius: 1px;
   transition: all 0.3s ease;
 }
-
+ 
 .night-mode .window {
   background: #f1c40f;
   box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);

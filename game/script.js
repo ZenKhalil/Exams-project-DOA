@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       darkModeToggle: document.getElementById("darkModeToggle"),
     },
   };
-
+ 
   // Main visualization update function - handles all array displays
   // This function updates the visual representation of the arrays based on the current step
   const updateArrays = async (step, stepIndex, discoveredIndices) => {

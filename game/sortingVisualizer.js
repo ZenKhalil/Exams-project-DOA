@@ -218,7 +218,7 @@ class SortingVisualizer {
 
     // Reapply theme colors in case they changed
     this.applyThemeToBuilding(building);
-  }
+  } 
 
   // Display the entire array in the specified container with optional highlights
   async showArray(

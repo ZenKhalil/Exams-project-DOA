@@ -29,7 +29,7 @@ class CityBuilder {
 
     return building;
   }
-
+ 
   addBuildingDetails(building, value) {
     // Tilføj vinduer
     const windowsContainer = document.createElement("div");

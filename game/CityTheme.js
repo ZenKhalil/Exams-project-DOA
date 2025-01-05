@@ -13,7 +13,7 @@ class CityTheme {
       generateBlock: "Generate City Block",
       startSort: "Start Organization",
       constructionSpeed: "Construction Speed",
-    };
+    }; 
 
     this.animations = {
       constructionDuration: 500,

@@ -120,7 +120,7 @@
   background-color: #f0f7ff;
   transform: translateX(5px);
 }
-
+ 
 .history-step.active {
   background-color: #e8f4ff;
   border-left-color: var(--success-color);
