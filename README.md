@@ -16,7 +16,8 @@ Counting Sort Visualization er et interaktivt webværktøj, der hjælper dig med
 - **Counting Sort**: En effektiv sorteringsalgoritme, der fungerer ved at tælle forekomsterne af hvert element i input-arrayet og bruge disse tællinger til at placere elementerne i det sorterede array.
 
 ### Datastrukturer
-- **Cirkulær Buffer**: Anvendes til at spore og håndtere sorteringstrin på en hukommelseseffektiv måde. Dette gør det muligt at gemme et fast antal trin og overskrive de ældste, når bufferen er fuld.
+- **Cirkulær Buffer**: Anvendes til at spore og håndtere sorteringstrin på en hukommelseseffektiv måde. 
+Dette gør det muligt at gemme et fast antal trin og overskrive de ældste, når bufferen er fuld.
 - **Arrays**: Bruges til at holde styr på originalt input, tælle forekomster, og det endelige sorterede resultat.
 
 ## Kør Visualiseringen Lokalt
