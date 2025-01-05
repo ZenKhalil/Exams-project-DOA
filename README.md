@@ -4,7 +4,7 @@
 
 ## Kort Beskrivelse
 
-Counting Sort Visualization er et interaktivt webværktøj, der hjælper dig med at forstå, hvordan Counting Sort algoritmen fungerer. Med trin-for-trin animationer og klare visualiseringer gør dette værktøj det nemt at lære og udforske sorteringsprocessen, selv uden forudgående programmeringskendskab.
+Counting Sort Visualization er et interaktivt webværktøj, der hjælper dig med at forstå, hvordan Counting Sort algoritmen fungerer. Med trin-for-trin animationer og klare visualiseringer gør dette værktøj det nemt at lære og udforske sorteringsprocessen.
 
 ## Se Den Deployede Udgave
 
