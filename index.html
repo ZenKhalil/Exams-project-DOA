@@ -3,52 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counting Sort Visualization</title>
+    <title>City Builder Sorting Visualization</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/city-theme.css">
 </head>
 <body>
     <div class="container">
         <div class="controls">
             <div class="button-group">
-                <button id="addNumber">Add Number</button>
-                <button id="randomize">Generate Random Numbers</button>
-                <button id="startSort">Start Sorting</button>
+                <button id="addNumber">Add Building</button>
+                <button id="randomize">Generate City Block</button>
+                <button id="startSort">Start Organization</button>
                 <button id="nextStep">Next Step</button>
-                <button id="reset">Reset</button>
+                <button id="reset">Reset City</button>
             </div>
             <div class="speed-control">
-                <label for="speedControl">Animation Speed:</label>
+                <label for="speedControl">Construction Speed:</label>
                 <input type="range" id="speedControl" min="100" max="1000" value="200" step="100">
+            </div>
+            <div class="theme-control">
+                <button id="darkModeToggle">Dark Mode</button>
             </div>
         </div>
         
-        <div class="visualization">
-            <div class="arrays-section">
-                <div class="array-container">
-                    <h3>Original Array</h3>
-                    <div id="original-array"></div>
-                </div>
+        <div class="visualization city-view">
+            <div class="array-container construction-site">
+                <h3>Construction Site</h3>
+                <div id="original-array"></div>
+            </div>
 
-                <div class="array-container">
-                    <h3>Count Array</h3>
-                    <div id="count-array"></div>
-                </div>
+            <div class="array-container districts">
+                <h3>City Districts</h3>
+                <div id="count-array"></div>
+            </div>
 
-                <div class="array-container">
-                    <h3>Sorted Array</h3>
-                    <div id="sorted-array"></div>
-                </div>
+            <div class="array-container organized-city">
+                <h3>Organized City</h3>
+                <div id="sorted-array"></div>
             </div>
             
             <div id="step-history" class="step-history">
-                <h3>Last Steps:</h3>
+                <h3>Construction Log:</h3>
             </div>
         </div>
     </div>
 
     <script src="/datastructures/CircularBuffer.js"></script>
     <script src="/algorithms/CountingSort.js"></script>
-    <script src="/sortingVisualizer.js"></script>
-    <script src="/script.js"></script>
+    <script src="/game/CityTheme.js"></script>
+    <script src="/game/CityBuilder.js"></script>
+    <script src="/game/sortingVisualizer.js"></script>
+    <script src="/game/script.js"></script>
 </body>
 </html>
