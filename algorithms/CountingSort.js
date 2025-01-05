@@ -4,16 +4,23 @@ class CountingSort {
   }
 
   sortPlatforms(numbers) {
+    // Reset sorting steps for a new sort
     this.sortingSteps = [];
+
+    // Find min, max, and range of numbers
     const min = Math.min(...numbers);
     const max = Math.max(...numbers);
     const range = max - min + 1;
+
+    // Initialize count array with zeros
     const count = new Array(range).fill(0);
 
+    // Count occurrences of each number
     for (let i = 0; i < numbers.length; i++) {
       const num = numbers[i];
       const targetIndex = num - min;
 
+      // Log scanning through the count array
       for (let j = 0; j <= targetIndex; j++) {
         this.sortingSteps.push({
           type: "counting_iteration",
@@ -25,6 +32,7 @@ class CountingSort {
         });
       }
 
+      // Increment count for the target index
       count[targetIndex]++;
       this.sortingSteps.push({
         type: "counting",
@@ -35,6 +43,7 @@ class CountingSort {
       });
     }
 
+    // Calculate cumulative counts
     for (let i = 1; i < count.length; i++) {
       const oldValue = count[i];
       count[i] += count[i - 1];
@@ -48,12 +57,15 @@ class CountingSort {
       });
     }
 
+    // Build the sorted output array
     const output = new Array(numbers.length);
 
+    // Place numbers in the output array using cumulative counts
     for (let i = numbers.length - 1; i >= 0; i--) {
       const currentNum = numbers[i];
       const countIndex = currentNum - min;
 
+      // Log position lookup
       this.sortingSteps.push({
         type: "position_lookup",
         description: `Finding count array position for ${currentNum} (number - ${min} = ${countIndex})`,
@@ -66,6 +78,7 @@ class CountingSort {
         highlightCount: true,
       });
 
+      // Log position calculation
       this.sortingSteps.push({
         type: "position_calculation",
         description: `Count[${countIndex}] = ${
@@ -81,10 +94,10 @@ class CountingSort {
         targetPosition: count[countIndex] - 1,
       });
 
+      // Place the number and decrement its count
       const position = count[countIndex] - 1;
       output[position] = currentNum;
       count[countIndex]--;
-
       this.sortingSteps.push({
         type: "sorting",
         description: `Placing ${currentNum} in position ${position} and decreasing count[${countIndex}]`,
@@ -98,13 +111,16 @@ class CountingSort {
       });
     }
 
+    // Return the sorted array
     return output;
   }
 
+  // Get all recorded sorting steps
   getSteps() {
     return this.sortingSteps;
   }
 
+  // Reset sorting steps
   resetSteps() {
     this.sortingSteps = [];
   }
