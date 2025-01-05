@@ -3,48 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stick Hero - Algorithm Visualization</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <title>Counting Sort Visualization</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <div class="main-container">
-        <div id="game-container">
-            <canvas id="game"></canvas>
-            <div id="ui">
-                <div id="introduction">Click and hold to stretch out the stick</div>
-                <div id="perfect">PERFECT!</div>
-                <button id="restart">↺</button>
-                <div id="score">0</div>
+    <div class="container">
+        <div class="controls">
+            <div class="button-group">
+                <button id="addNumber">Add Number</button>
+                <button id="randomize">Generate Random Numbers</button>
+                <button id="startSort">Start Sorting</button>
+                <button id="nextStep">Next Step</button>
+                <button id="reset">Reset</button>
+            </div>
+            <div class="speed-control">
+                <label for="speedControl">Animation Speed:</label>
+                <input type="range" id="speedControl" min="100" max="1000" value="200" step="100">
             </div>
         </div>
-        <div id="visualization-panel">
-            <h3>Counting Sort Visualization</h3>
-            <div id="sort-steps">
-                <div id="original-array" class="step">
-                    <h4>Original Platforms</h4>
-                    <div class="array-visual"></div>
+        
+        <div class="visualization">
+            <div class="arrays-section">
+                <div class="array-container">
+                    <h3>Original Array</h3>
+                    <div id="original-array"></div>
                 </div>
-                <div id="counting-array" class="step">
-                    <h4>Counting Array</h4>
-                    <div class="array-visual"></div>
+
+                <div class="array-container">
+                    <h3>Count Array</h3>
+                    <div id="count-array"></div>
                 </div>
-                <div id="sorted-array" class="step">
-                    <h4>Sorted Platforms</h4>
-                    <div class="array-visual"></div>
+
+                <div class="array-container">
+                    <h3>Sorted Array</h3>
+                    <div id="sorted-array"></div>
                 </div>
+            </div>
+            
+            <div id="step-history" class="step-history">
+                <h3>Last Steps:</h3>
             </div>
         </div>
     </div>
 
-    <!-- Data Structures -->
-    <script src="datastructures/CircularBuffer.js"></script>
-    
-    <!-- Algorithms -->
-    <script src="algorithms/CountingSort.js"></script>
-    
-    <!-- Game Logic -->
-    <script src="./game/Renderer.js"></script>
-    <script src="game/StickHero.js"></script>
-    <script src="game/visualization.js"></script>
+    <script src="/datastructures/CircularBuffer.js"></script>
+    <script src="/algorithms/CountingSort.js"></script>
+    <script src="/sortingVisualizer.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
