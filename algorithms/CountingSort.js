@@ -4,15 +4,11 @@ class CountingSort {
   }
 
   sortPlatforms(numbers) {
-    // Reset sorting steps for a new sort
     this.sortingSteps = [];
 
-    // Find min, max, and range of numbers
     const min = Math.min(...numbers);
     const max = Math.max(...numbers);
     const range = max - min + 1;
-
-    // Initialize count array with zeros
     const count = new Array(range).fill(0);
 
     // Count occurrences of each number
@@ -29,6 +25,7 @@ class CountingSort {
           activeNumber: num,
           currentIndex: j,
           isTarget: j === targetIndex,
+          originalIndex: i, // Add original index
         });
       }
 
@@ -40,6 +37,7 @@ class CountingSort {
         data: [...count],
         activeNumber: num,
         currentIndex: targetIndex,
+        originalIndex: i, // Add original index
       });
     }
 
@@ -57,7 +55,8 @@ class CountingSort {
       });
     }
 
-    // Build the sorted output array
+    // Create array to track which indices we've processed for each number
+    const processedCounts = new Array(range).fill(0);
     const output = new Array(numbers.length);
 
     // Place numbers in the output array using cumulative counts
@@ -76,6 +75,7 @@ class CountingSort {
         number: currentNum,
         countIndex: countIndex,
         highlightCount: true,
+        originalIndex: i, // Add original index
       });
 
       // Log position calculation
@@ -92,12 +92,14 @@ class CountingSort {
         countIndex: countIndex,
         countValue: count[countIndex],
         targetPosition: count[countIndex] - 1,
+        originalIndex: i, // Add original index
       });
 
       // Place the number and decrement its count
       const position = count[countIndex] - 1;
       output[position] = currentNum;
       count[countIndex]--;
+
       this.sortingSteps.push({
         type: "sorting",
         description: `Placing ${currentNum} in position ${position} and decreasing count[${countIndex}]`,
@@ -108,19 +110,17 @@ class CountingSort {
         currentNumber: currentNum,
         targetPosition: position,
         countIndex: countIndex,
+        originalIndex: i, // Add original index
       });
     }
 
-    // Return the sorted array
     return output;
   }
 
-  // Get all recorded sorting steps
   getSteps() {
     return this.sortingSteps;
   }
 
-  // Reset sorting steps
   resetSteps() {
     this.sortingSteps = [];
   }
