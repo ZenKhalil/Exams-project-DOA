@@ -1,0 +1,136 @@
+.building {
+  position: relative;
+  min-width: 50px;
+  background: linear-gradient(45deg, #e0e0e0, #ffffff);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin: 0 5px;
+}
+
+.building-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1px;
+}
+
+.roof {
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  right: -8px;
+  height: 20px;
+  background: #c0392b;
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+.windows-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1px;
+}
+
+.window-row {
+  display: flex;
+  justify-content: space-around;
+  margin: 1px 0;
+}
+
+.window {
+  width: 15px;  /* Reduceret fra 15px */
+  height: 15px;  /* Reduceret fra 20px */
+  background: #87CEEB;
+  border: 1px solid #2c3e50;  /* Tyndere border */
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.night-mode .window {
+  background: #f1c40f;
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+}
+
+.door {
+  width: 15px;  
+  height: 21px;  
+  background: #8b4513;
+  margin: 0 auto;
+  border-radius: 2px 2px 0 0;
+  border: 1px solid #5d2f0d;
+}
+
+.value-sign {
+  position: absolute;
+  top: -15px;
+  right: -6px;
+  background: #2c3e50;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-size: 0.7em;  
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+
+.district-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.district-label {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #34495e;
+  font-weight: bold;
+}
+
+/* Tilstande */
+.building.highlighted {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  transform: scale(1.05);
+}
+
+.building.processing {
+  background: linear-gradient(45deg, #f39c12, #f1c40f);
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
+}
+
+.building.construction {
+  animation: construct 0.5s ease;
+}
+
+.building.placeholder {
+  background: linear-gradient(45deg, #ecf0f1, #bdc3c7);
+  border: 2px dashed #95a5a6;
+  opacity: 0.7;
+}
+
+/* Animationer */
+@keyframes construct {
+  0% { transform: translateY(-20px); opacity: 0; }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsivt design */
+@media (max-width: 768px) {
+  .building {
+    min-width: 60px;
+  }
+  
+  .window {
+    width: 12px;
+    height: 15px;
+  }
+  
+  .door {
+    width: 20px;
+    height: 30px;
+  }
+}
+
