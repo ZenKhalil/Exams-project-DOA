@@ -3,86 +3,108 @@ class CountingSort {
     this.sortingSteps = [];
   }
 
-  sortPlatforms(platforms, key = "w") {
-    // Handle empty or single platform 
-    if (!platforms || platforms.length <= 1) {
-      return platforms || [];
-    }
-
-    // Find the range of values from biggest to lowest
-    let min = Infinity;
-    let max = -Infinity;
-
-    // Get min and max through the range
-    for (let platform of platforms) {
-      if (platform && platform[key] !== undefined) {
-        min = Math.min(min, platform[key]);
-        max = Math.max(max, platform[key]);
-      }
-    }
-
-    // If no valid values found or invalid range
-    if (min === Infinity || max === -Infinity || min > max) {
-      return platforms;
-    }
-
+  sortPlatforms(numbers) {
+    this.sortingSteps = [];
+    const min = Math.min(...numbers);
+    const max = Math.max(...numbers);
     const range = max - min + 1;
-
-    // Create counting array with safe length all 0's
     const count = new Array(range).fill(0);
 
-    // Count occurrences
-    for (let platform of platforms) {
-      if (platform && platform[key] !== undefined) {
-        count[platform[key] - min]++;
+    for (let i = 0; i < numbers.length; i++) {
+      const num = numbers[i];
+      const targetIndex = num - min;
+
+      for (let j = 0; j <= targetIndex; j++) {
+        this.sortingSteps.push({
+          type: "counting_iteration",
+          description: `Scanning through count array for number ${num}`,
+          data: [...count],
+          activeNumber: num,
+          currentIndex: j,
+          isTarget: j === targetIndex,
+        });
       }
+
+      count[targetIndex]++;
+      this.sortingSteps.push({
+        type: "counting",
+        description: `Adding 1 to count[${num}]`,
+        data: [...count],
+        activeNumber: num,
+        currentIndex: targetIndex,
+      });
     }
 
-    // Store counting step
-    this.sortingSteps.push({
-      type: "counting",
-      data: [...count],
-    });
-
-    // Calculate cumulative count
     for (let i = 1; i < count.length; i++) {
+      const oldValue = count[i];
       count[i] += count[i - 1];
+      this.sortingSteps.push({
+        type: "cumulative",
+        description: `Adding previous count (${count[i - 1]}) to position ${i}`,
+        data: [...count],
+        currentIndex: i,
+        previousValue: oldValue,
+        newValue: count[i],
+      });
     }
 
-    // Store cumulative step
-    this.sortingSteps.push({
-      type: "cumulative",
-      data: [...count],
-    });
+    const output = new Array(numbers.length);
 
-    // Build output array
-    const output = new Array(platforms.length);
-    for (let i = platforms.length - 1; i >= 0; i--) {
-      const platform = platforms[i];
-      if (platform && platform[key] !== undefined) {
-        const index = count[platform[key] - min] - 1;
-        output[index] = platform;
-        count[platform[key] - min]--;
-      }
+    for (let i = numbers.length - 1; i >= 0; i--) {
+      const currentNum = numbers[i];
+      const countIndex = currentNum - min;
+
+      this.sortingSteps.push({
+        type: "position_lookup",
+        description: `Finding count array position for ${currentNum} (number - ${min} = ${countIndex})`,
+        data: {
+          countArray: [...count],
+          sortedArray: [...output],
+        },
+        number: currentNum,
+        countIndex: countIndex,
+        highlightCount: true,
+      });
+
+      this.sortingSteps.push({
+        type: "position_calculation",
+        description: `Count[${countIndex}] = ${
+          count[countIndex]
+        }, so ${currentNum} goes to position ${count[countIndex] - 1}`,
+        data: {
+          countArray: [...count],
+          sortedArray: [...output],
+        },
+        number: currentNum,
+        countIndex: countIndex,
+        countValue: count[countIndex],
+        targetPosition: count[countIndex] - 1,
+      });
+
+      const position = count[countIndex] - 1;
+      output[position] = currentNum;
+      count[countIndex]--;
+
+      this.sortingSteps.push({
+        type: "sorting",
+        description: `Placing ${currentNum} in position ${position} and decreasing count[${countIndex}]`,
+        data: {
+          countArray: [...count],
+          sortedArray: [...output],
+        },
+        currentNumber: currentNum,
+        targetPosition: position,
+        countIndex: countIndex,
+      });
     }
 
-    // Visualize the sorting process
-    if (window.sortingVisualizer) {
-      window.sortingVisualizer.clear();
-      window.sortingVisualizer.showOriginalPlatforms(platforms);
-      window.sortingVisualizer.showCountingArray(count);
-      window.sortingVisualizer.showSortedPlatforms(output.filter(Boolean));
-    }
-
-    return output.filter(Boolean); 
+    return output;
   }
 
-  // Get all visualization steps
   getSteps() {
     return this.sortingSteps;
   }
 
-  // Reset visualization steps
   resetSteps() {
     this.sortingSteps = [];
   }
